@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <title>Mike Miller | Solution Architect and Full Stack Web Developer</title>
+<!-- partial:partial/master-head.html -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/uikit.min.css"/>
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.7.1/gist-embed.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Libre+Franklin:300" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="53680b7e-0436-4ab6-bf89-5c02080d6499"
+            type="text/javascript" async></script>
+    <script>
+      $(document).ready(function () {
+        $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+          .not('[href="#"]')
+          .not('[href="#0"]')
+          .click(function (event) {
+            // On-page links
+            if (
+              location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+              &&
+              location.hostname == this.hostname
+            ) {
+              // Figure out element to scroll to
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              console.log('target', target);
+              // Does a scroll target exist?
+              if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 600, function () {
+                  // Callback after animation
+                });
+              }
+            }
+          });
+      });
+    </script>
+</head>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- partial -->
+
+<!-- Add your site or application content here -->
+<header class="hero gradient-blue uk-flex uk-box-shadow-bottom uk-box-shadow-medium">
+    <div class="hero-body" id="hero">
+        <div>
+            <h1 class="uk-heading-hero">Mike Miller</h1>
+            <h2 class="uk-h2">Solution Architect and Full Stack Web Developer</h2>
+            <p>Senior Full Stack/PHP Engineer with 9+ years of professional experience in a variety of design and
+                development roles. Proficient in modern web technologies with loads of experience leveraging the awesome
+                power of AWS and Google Cloud.</p>
+            <p> Last 5+ years have been spent in startup land delivering new products from design stage through to
+                commercial viability. I am a great
+                communicator and team player, grasp complex new technologies quickly and have a talent for identifying
+                emerging technical opportunities and translating them into powerful solutions. </p>
+            <p>Currently very excited by
+                the potential of Google's realtime database Firestore combined with React Native and the dream of a
+                serverless stack.</p>
+            <br>
+            <a href="#blog">Blog</a> &middot; <a href="#bio">Bio</a>
+        </div>
+    </div>
+</header>
+<!-- partial:partial/latest-blog.html -->
+<!-- partial:blogs/installing-elasticsearch-kibana-vagrant.html -->
+<section class="blog" id="blog">
+    <h3 class="uk-h3" style="display: inline-block;">
+        Installing Elasticsearch & Kibana Using Vagrant
+    </h3>    <span class="uk-label uk-visible@s">Latest</span><br>
+    <small class="uk-text-small uk-text-uppercase uk-text-muted">Monday 4th September, 2018</small>
+    <p>
+        We are going to install Elasticsearch v6.x and Kibana v6.x. This is (at least for me) the core parts of the
+        “Elastic Stack”.
+    </p>
+    <p>
+        The easiest way to get an Elasticsearch host setup locally is to install it on a virtual machine using Vagrant.
+        <!-- If you don’t have Vagrant installed head over here.-->
+    </p>
+    <h4 class="mm-underlined">Setting Up Vagrant</h4>
+    <p class="note">
+        If you don't have Vagrant installed check out this post for instructions.
+    </p>
+    <p>
+        Create a repository for your Vagrant project and cd into it. I have called mine `elasticsearch-getting-started`.
+    </p>
+    <p>
+        To initialise a Ubuntu 16.04 box run the following:<br><br>
+        <code>$ mkdir elasticsearch-getting-started && cd elasticsearch-getting-started</code><br />
+        <code>$ vagrant init ubuntu/xenial64</code>
+    </p>
+
+    <p>
+        Initialising the vagrant project will create a default file in the root of your project called `VagrantFile`. We
+        need to make some manual edits to the generated VagrantFile to tell
+        Vagrant where to find our provisioning script and to forward ports for Elasticsearch and Kibana to the host
+        machine so we can access them in the browser.
+    </p>
+
+    <p>
+        Add the following inside the <code>Vagrant.configure</code> block to point vagrant to a provisioning script.
+    </p>
+    <p class="note">The
+        provisioning script is called by Vagrant after the box is spun up for the first time. It will take care of the
+        installation of all the required software and changing some configuration.</p>
+
+    <div class="code-embed">
+        <span data-gist-id="c280714d50683b1075e44780d8a14286" data-gist-line="16-19"></span>
+    </div>
+
+    <p>
+        Next, add the following to forward the ports 9200 (Elasticsearch) and 5601 (Kibana) to your host:
+    </p>
+
+    <div class="code-embed">
+        <span data-gist-id="c280714d50683b1075e44780d8a14286" data-gist-line="19-23"></span>
+    </div>
+
+    <div uk-accordion>
+        <div class="uk-background-muted mm-accordion-cta">
+            <h6 class="uk-accordion-title">Expand to view the complete `VagrantFile`</h6>
+            <div class="uk-accordion-content">
+                <span data-gist-id="c280714d50683b1075e44780d8a14286" data-gist-highlight-line="17-18,20-22"></span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <h4 class="mm-underlined">Provisioning the Virtual Machine</h4>
+    <p>
+        Next the provisioning script itself <code>bootstrap.sh</code>. The responsiblility of the provisioning script is
+        to install the required software onto the virtual machine and to setup any configuration required. We are going
+        to install Elasticsearch and its dependancies as well as Kibana. You can read more about Kibana <a
+            href="https://www.elastic.co/guide/en/kibana/current/introduction.html">here</a>. In short, Kibana is to
+        Elasticsearch what PhpMyAdmin is to MySQL.
+    </p>
+    <p>
+        The first step it to install the Oracle JDK. The Elasticsearch <a
+            href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/_installation.html">documentation</a> for
+        version 6.x recommends the Oracle JDK version 1.8.0_131. To install the JDK we first need to grab the PPA from
+        Oracle and update the license acceptance flags. Once this is done we can use the installer and set the
+        environment path.
+    </p>
+
+    <div class="code-embed">
+        <span data-gist-id="cf797b6d29a70f384803a1d6ede5c885" data-gist-line="2-17"></span>
+    </div>
+
+    <p>Once the Elasticsearch dependencies are properly installed the next step is to add the Elasticsearch repository
+        definition to the apt sources list. This requires the `apt-transport-https` package to be installed. Once this
+        is done we can add the repository definition and install both Elasticsearch and Kibana.</p>
+
+    <div class="code-embed">
+        <span data-gist-id="cf797b6d29a70f384803a1d6ede5c885" data-gist-line="17-31"></span>
+    </div>
+
+    <p>Now everything is installed its time to tweak some configuration. First off we need to give ownership of the
+        Elasticsearch install directory to the ES group and user `elasticsearch:elasticsearch` and allow access to both
+        from the host machine, so we can view both in the browser.</p>
+
+    <div class="code-embed">
+        <span data-gist-id="cf797b6d29a70f384803a1d6ede5c885" data-gist-line="31-38"></span>
+    </div>
+
+    <p>Now everything is installed and properly configured the next step is to start both Elasticsearch and Kibana.</p>
+
+    <div class="code-embed">
+        <span data-gist-id="cf797b6d29a70f384803a1d6ede5c885" data-gist-line="38-42"></span>
+    </div>
+    <div uk-accordion>
+        <div class="uk-background-muted mm-accordion-cta">
+            <h6 class="uk-accordion-title">Expand to view the complete `bootstrap.sh`</h6>
+            <div class="uk-accordion-content">
+                <span data-gist-id="cf797b6d29a70f384803a1d6ede5c885"></span>
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <h4 class="mm-underlined">Is Everything is Working?</h4>
+    <p>If everything is up and running as expected you will be able to find Elasticsearch at <a href="http://localhost:9200">http://localhost:9200</a> and Kibana at <a href="http://localhost:5601">http://localhost:5601</a>. A working Elasticsearch will return a JSON in your browser and Kibana will launch a web app that looks like the screen shot below</p>
+
+    <div class="uk-divider-icon"></div>
+    <!--<h5>More Like This</h5>
+    <ul class="uk-list">
+        <li class="uk-position-relative list-item">
+            <span class="uk-h3">Elasticsearch: Getting Started on Ubuntu</span><br>
+            <small class="uk-text-small uk-text-uppercase uk-text-muted">Monday 4th September, 2018</small>
+            <span uk-icon="icon: chevron-right; ratio:3" class="list-chevron uk-visible@s"></span>
+        </li>
+        <li class="uk-position-relative list-item">
+            <span class="uk-h3">Elasticsearch: Debugging Scripts in Laravel</span><br>
+            <small class="uk-text-small uk-text-uppercase uk-text-muted">Monday 4th September, 2018</small>
+            <span uk-icon="icon: chevron-right; ratio:3" class="list-chevron uk-visible@s"></span>
+        </li>
+        <li class="uk-position-relative list-item">
+            <span class="uk-h3">Elasticsearch: Building Queries in Laravel</span><br>
+            <small class="uk-text-small uk-text-uppercase uk-text-muted">Monday 4th September, 2018</small>
+            <span uk-icon="icon: chevron-right; ratio:3" class="list-chevron uk-visible@s"></span>
+        </li>
+        <li class="uk-position-relative list-item">
+            <span class="uk-h3">Elasticsearch: "More like this" search</span><br>
+            <small class="uk-text-small uk-text-uppercase uk-text-muted">Monday 4th September, 2018</small>
+            <span uk-icon="icon: chevron-right; ratio:3" class="list-chevron uk-visible@s"></span>
+        </li>
+    </ul>
+    <hr class="uk-divider-icon uk-margin-medium">
+    <div id="bio">
+        <span class="uk-h1">Bio</span>
+        <h2>Work History</h2>
+        <p>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+            College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
+            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+            Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+            The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        </p>
+        <h2>Technology</h2>
+        <p>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+            College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
+            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+            Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+            The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        </p>
+        <h2>Technology</h2>
+        <p>
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+            College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
+            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
+            Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+            The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        </p>
+        <code></code>
+    </div>-->
+</section>
+
+<!-- partial -->
+
+<!-- partial -->
+
+<!-- partial:partial/master-foot.html -->
+<div class="icon-bar uk-flex">
+    <div class="icon-container uk-flex uk-flex-left uk-flex-middle">
+        <a href="#hero" uk-totop class="icon-container-icon"></a>
+        <a href="https://dev.to/imikemiller" class="icon-container-icon">
+            <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Mike Miller's DEV Profile" height="32"
+                 width="32"/>
+        </a>
+
+        <a href="https://meta.stackoverflow.com/users/1552594/mike-miller" class="icon-container-icon">
+            <svg aria-hidden="true" class="svg-icon fc-black-900 iconLogoGlyphMd" width="27" height="32"
+                 viewBox="0 0 32 32">
+                <g>
+                    <path fill="#BCBBBB" d="M26 33v-9h4v13H0V24h4v9z"></path>
+                    <path d="M23.1 25.99l.68-2.95-16.1-3.35L7 23l16.1 2.99zM9.1 15.2l15 7 1.4-3-15-7-1.4 3zm4.2-7.4L26 18.4l2.1-2.5L15.4 5.3l-2.1 2.5zM21.5 0l-2.7 2 9.9 13.3 2.7-2L21.5 0zM7 30h16v-3H7v3z"
+                          fill="#F48024"></path>
+                </g>
+            </svg>
+        </a>
+
+        <a href="https://github.com/imikemiller" data-hotkey="g d" aria-label="Homepage"
+           data-ga-click="Header, go to dashboard, icon:logo" class="icon-container-icon">
+            <svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32"
+                 aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+        </a>
+
+        <a class="icon-container-icon" title="Email me at mike@mikemiller.uk" href="mailto:mike@mikemiller.uk"><img width="40" alt="Gmail Icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Gmail_Icon.svg/200px-Gmail_Icon.svg.png"></a>
+
+    </div>
+</div>
+<script src="js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>');</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () { ga.q.push(arguments); };
+  ga.q = [];
+  ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto');
+  ga('send', 'pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5b8d31beafc2c34e96e82a61/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+
+</html>
+
+<!-- partial -->
