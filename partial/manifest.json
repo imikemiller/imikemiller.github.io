@@ -1,0 +1,10 @@
+{
+  "installing-elasticsearch-kibana-vagrant.html":{
+    "title":"Installing Elasticsearch and Kibana using Vagrant",
+    "tags":[
+      "Elasticsearch","Kibana","Vagrant","Ubuntu"
+    ],
+    "synopsis":"This post will explain the steps to building your own Vagrant project to launch a virtual Ubuntu box running Elasticsearch and Kibana. Full source code included.",
+    "date":""
+  }
+}

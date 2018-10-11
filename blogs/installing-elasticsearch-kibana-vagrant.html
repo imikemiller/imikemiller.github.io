@@ -2,15 +2,12 @@
 <html class="no-js" lang="">
 
 <head>
-    <title>Mike Miller | Solution Architect and Full Stack Web Engineer</title>
-    <meta name="description" content="Mike has 5+ years of leadership experience, skilled in cloud computing using AWS and Google Cloud. A great communicator and respected leader."/>
-    <meta name="tags" content="AWS, Symfony, Laravel, PHP, Javascript, React, Angular, Redis, Elasticsearch, MySQL, Google Cloud, Start Up, Mobile, Android, iOS" />
-    <meta property="og:title" content="Solution Architect and Full Stack Web Engineer" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://imikemiller.github.io" />
-    <meta property="og:image" content="http://imikemiller.github.io/img/unfurl_image.png" />
-<!-- partial:partial/master-head.html -->
-
+    <title>MIKE MILLER | Installing Elasticsearch and Kibana using Vagrant</title>
+    <meta name="tags" content="Elasticsearch, Kibana, Vagrant, Ubuntu" />
+    <meta name="description" content="This post will explain the steps to building your own Vagrant project to launch a virtual Ubuntu box running Elasticsearch and Kibana. Full source code included." />
+    
+    <!-- partial:../master-head.html -->
+    
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -71,24 +68,10 @@
     your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
-<!-- partial -->
+    <!-- partial -->
 
-<!-- Add your site or application content here -->
-<header class="hero gradient-blue uk-flex uk-box-shadow-bottom uk-box-shadow-medium">
-    <div class="hero-body" id="hero">
-        <div>
-            <h1 class="uk-heading-hero">Mike Miller</h1>
-            <h2 class="uk-h2">Solution Architect and Full Stack Web Engineer</h2>
-            <p>An experienced Solution Architect with 5+ years of leadership experience designing and developing innovative real-time web solutions to power successful start ups into profitability.</p>
-            <p>Highly skilled in cloud computing and designing scalable infrastructure using Amazon Web Services and Google Cloud. </p>
-            <p>A great communicator and respected leader who has built software development teams into cohesive units delivering consistent business value.</p>
-            <a href="#blog">Blog</a> &middot; <a href="#bio">Bio</a>
-        </div>
-    </div>
-</header>
-<!-- partial:partial/latest-blog.html -->
-<!-- partial:blogs/installing-elasticsearch-kibana-vagrant.html -->
-<section class="blog" id="blog">
+    <!-- partial:../blogs/installing-elasticsearch-kibana-vagrant.html -->
+    <section class="blog" id="blog">
     <h3 class="uk-h3" style="display: inline-block;">
         Installing Elasticsearch & Kibana Using Vagrant
     </h3>    <span class="uk-label uk-visible@s">Latest</span><br>
@@ -274,12 +257,10 @@
     </div>-->
 </section>
 
-<!-- partial -->
+    <!-- partial -->
 
-<!-- partial -->
-
-<!-- partial:partial/master-foot.html -->
-<div class="icon-bar uk-flex">
+    <!-- partial:../master-foot.html -->
+    <div class="icon-bar uk-flex">
     <div class="icon-container uk-flex uk-flex-left uk-flex-middle">
         <a href="#hero" uk-totop class="icon-container-icon"></a>
         <a href="https://dev.to/imikemiller" class="icon-container-icon">
@@ -311,10 +292,10 @@
 
     </div>
 </div>
-<script src="js/vendor/modernizr-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+<script src="js/vendor/modernizr-{{MODERNIZR_VERSION}}.min.js"></script>
+<script src="https://code.jquery.com/jquery-{{JQUERY_VERSION}}.min.js" integrity="{{JQUERY_SRI_HASH}}"
         crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>');</script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>');</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
@@ -345,4 +326,4 @@
 
 </html>
 
-<!-- partial -->
+    <!-- partial -->
