@@ -261,6 +261,11 @@ Blog Layout
     max-width: 60%;
 }
 
+.note{
+    padding:10px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+}
 
 /*
 UIKit Custom
@@ -284,6 +289,7 @@ UIKit Custom
     padding-bottom: 10px;
     border-bottom: thin solid #4444;
 }
+
 
 
 

@@ -12,9 +12,6 @@
         <!-- If you don’t have Vagrant installed head over here.-->
     </p>
     <h4 class="mm-underlined">Setting Up Vagrant</h4>
-    <p class="note">
-        If you don't have Vagrant installed check out this post for instructions.
-    </p>
     <p>
         Create a repository for your Vagrant project and cd into it. I have called mine `elasticsearch-getting-started`.
     </p>
@@ -23,7 +20,9 @@
         <code>$ mkdir elasticsearch-getting-started && cd elasticsearch-getting-started</code><br />
         <code>$ vagrant init ubuntu/xenial64</code>
     </p>
-
+    <p class="note">
+        If you don't have Vagrant installed check out this <a href="">post</a> for instructions.
+    </p>
     <p>
         Initialising the vagrant project will create a default file in the root of your project called `VagrantFile`. We
         need to make some manual edits to the generated VagrantFile to tell
@@ -32,15 +31,15 @@
     </p>
 
     <p>
-        Add the following inside the <code>Vagrant.configure</code> block to point vagrant to a provisioning script.
+        Open `VagrantFile` in your favourite editor and add the following inside the <code>Vagrant.configure</code> block to point vagrant to a provisioning script.
     </p>
-    <p class="note">The
-        provisioning script is called by Vagrant after the box is spun up for the first time. It will take care of the
-        installation of all the required software and changing some configuration.</p>
 
     <div class="code-embed">
         <span data-gist-id="c280714d50683b1075e44780d8a14286" data-gist-line="16-19"></span>
     </div>
+    <p>The
+        provisioning script is called by Vagrant after the box is spun up for the first time. It will take care of the
+        installation of all the required software and changing some configuration.</p>
 
     <p>
         Next, add the following to forward the ports 9200 (Elasticsearch) and 5601 (Kibana) to your host:
@@ -111,7 +110,16 @@
     <br/>
 
     <h4 class="mm-underlined">Is Everything is Working?</h4>
-    <p>If everything is up and running as expected you will be able to find Elasticsearch at <a href="http://localhost:9200">http://localhost:9200</a> and Kibana at <a href="http://localhost:5601">http://localhost:5601</a>. A working Elasticsearch will return a JSON in your browser and Kibana will launch a web app that looks like the screen shot below</p>
+    <p>If everything is up and running as expected you will be able to find Elasticsearch at <a href="http://localhost:9200">http://localhost:9200</a> and Kibana at <a href="http://localhost:5601">http://localhost:5601</a>. </p>
+    <p>A working Elasticsearch will return a JSON in your browser that looks a lot like this:</p>
+
+    <div class="code-embed">
+        <script src="https://gist.github.com/imikemiller/9c3a88e480a33e365b3a8340b82e1b4f.js"></script>
+    </div>
+
+    <p>And Kibana should load up and look something like this:</p>
+    <img src="../../img/kibana-success.png">
+    <p>And that is everything all set. Further posts to follow about how to query ES and how to avoid some of the gotchas.</p>
 
     <div class="uk-divider-icon"></div>
     <!--<h5>More Like This</h5>
