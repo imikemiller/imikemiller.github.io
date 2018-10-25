@@ -1,5 +1,5 @@
 <div class="icon-bar uk-flex">
-    <div class="icon-container uk-flex uk-flex-left uk-flex-middle">
+    <div id="icon-bar-icons" class="uk-flex uk-flex-left uk-flex-middle">
         <a href="#hero" uk-totop class="icon-container-icon"></a>
         <a href="https://dev.to/imikemiller" class="icon-container-icon">
             <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Mike Miller's DEV Profile" height="32"
@@ -36,6 +36,15 @@
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>');</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+
+    var el = document.getElementsByClassName("uk-container")[0];
+    var style = window.getComputedStyle(el);
+    console.log(style.width,style.padding,style.margin);
+
+    document.getElementById('icon-bar-icons').style.width = `${document.getElementsByClassName("uk-container")[0].clientWidth}px`
+</script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>

@@ -121,24 +121,44 @@ Header
 }
 
 .hero-body{
-    border-left:white solid 0.2em;
-    min-height:calc(100vh - 120px);
+    min-height:calc(100vh - 120px) !important;
     padding-left:1.5em;
     padding-right:1.5em;
-    margin-left:2em;/*must be same as the .blog*/
     padding-bottom:70px;
-    max-width: 1200px;
 }
 
 .hero-body h1{
     font-family: 'Libre Franklin', sans-serif;
 }
 
-.hero-body p{
-    max-width: 80%;
+
+.hero-heading{
+    height:auto;
+    white-space: nowrap;
 }
 
-.hero-body::before {
+.hero-heading > .uk-heading-hero{
+    margin:0;
+    position: absolute;
+    bottom:0;
+}
+
+#hero-dummy{
+    display:none;
+}
+
+.mm-fixed-header{
+    display: block!important;
+    position: fixed;
+    z-index: 2;
+}
+
+.mm-arrow{
+    border-left:white solid 0.2em;
+    min-height: 30px;
+}
+
+.mm-arrow::before {
     border-style: solid;
     border-width: 0.2em 0.2em 0 0;
     content: '';
@@ -148,10 +168,15 @@ Header
     position: absolute;
     width: 1.2em;
     bottom: 0.2em;
-    left:-0.85em;
+    left:-0.83em;
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
+}
+
+#mm-first-arrow{
+    height:30px;
+    top:-40px;
 }
 
 /*
@@ -168,6 +193,10 @@ Icon Bar
     box-shadow: 0px 2px 25px -1px rgba(0,0,0,0.75);
 }
 
+#icon-bar-icons{
+    margin:auto!important;
+}
+
 .icon-container{
     margin-left:2em;/*must be same as the .hero-body*/
     width:300px;/*4 icons * 60px*/
@@ -178,7 +207,7 @@ Icon Bar
 }
 
 .icon-container-icon:first-child{
-    margin-left:-60px;
+    margin-left:-0.9em;
 }
 
 /*
@@ -189,9 +218,6 @@ Blog
     padding-top:40px;
     padding-bottom: 80px;
     padding-right:0;
-    margin-left:2em;/*must be same as the .hero-body*/
-    margin-right:2em;
-    max-width: 1200px;
 }
 
 .blog h3{
@@ -269,6 +295,8 @@ Blog Layout
 
 /*
 UIKit Custom
+        display: block!important;
+        position: fixed;
  */
 .uk-label{
     background-color: #4492d2;
@@ -388,18 +416,6 @@ UIKit Custom
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 
-    .blog{
-        max-width: 1200px;
-        margin-left:16%;
-    }
-
-    .hero-body{
-        margin-left:16%;
-    }
-
-    .icon-container{
-        margin-left:16%;
-    }
 }
 
 @media print,

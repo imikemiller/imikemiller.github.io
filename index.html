@@ -6,9 +6,10 @@
     <meta name="description" content="Mike has 5+ years of leadership experience, skilled in cloud computing using AWS and Google Cloud. A great communicator and respected leader."/>
     <meta name="tags" content="AWS, Symfony, Laravel, PHP, Javascript, React, Angular, Redis, Elasticsearch, MySQL, Google Cloud, Start Up, Mobile, Android, iOS" />
     <meta property="og:title" content="Solution Architect and Full Stack Web Engineer" />
+    <meta property="og:description" content="Mike has 5+ years of leadership experience, skilled in cloud computing using AWS and Google Cloud. A great communicator and respected leader." />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://imikemiller.github.io" />
-    <meta property="og:image" content="http://imikemiller.github.io/img/unfurl_image.png" />
+    <meta property="og:url" content="http://mikemiller.uk" />
+    <meta property="og:image" content="http://mikemiller.uk/img/unfurl_image.png" />
 <!-- partial:partial/master-head.html -->
 
     <meta charset="utf-8">
@@ -28,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Libre+Franklin:300" rel="stylesheet">
 
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v1">
 
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="53680b7e-0436-4ab6-bf89-5c02080d6499"
             type="text/javascript" async></script>
@@ -74,21 +75,52 @@
 <!-- partial -->
 
 <!-- Add your site or application content here -->
-<header class="hero gradient-blue uk-flex uk-box-shadow-bottom uk-box-shadow-medium">
-    <div class="hero-body" id="hero">
-        <div>
+<header class="hero gradient-blue uk-flex uk-box-shadow-bottom uk-box-shadow-medium" id="hero">
+    <div class="hero-body mm-arrow uk-container">
+        <div uk-parallax="opacity: 0">
             <h1 class="uk-heading-hero">Mike Miller</h1>
-            <h2 class="uk-h2">Solution Architect and Full Stack Web Engineer</h2>
+            <h2 class="uk-h2">Solution Architect and Full Stack Web Developer</h2>
             <p>An experienced Solution Architect with 5+ years of leadership experience designing and developing innovative real-time web solutions to power successful start ups into profitability.</p>
-            <p>Highly skilled in cloud computing and designing scalable infrastructure using Amazon Web Services and Google Cloud. </p>
-            <p>A great communicator and respected leader who has built software development teams into cohesive units delivering consistent business value.</p>
+            <P>If you are looking for a professional, who is highly skilled in cloud computing and designing scalable infrastructure using Amazon Web Services and Google Cloud then your search is over.</p>
+            <p>I am a great communicator and respected leader who has built software development teams into cohesive units delivering consistent business value.</p>
             <a href="#blog">Blog</a> &middot; <a href="#bio">Bio</a>
+        </div>
+        <div uk-parallax="opacity: 0,1" id="hero-heading" class="hero-heading">
+            <h1 class="uk-heading-hero" id="uk-heading-hero">Mike Miller</h1>
         </div>
     </div>
 </header>
+<header class="hero gradient-blue uk-flex uk-box-shadow-bottom uk-box-shadow-medium" id="hero-dummy">
+    <div class="hero-body mm-arrow uk-container">
+        <div class="hero-heading">
+            <h1 class="uk-heading-hero">Mike Miller</h1>
+        </div>
+    </div>
+</header>
+    <script>
+      window.addEventListener('scroll', function (event) {
+        if (isInViewport(document.getElementById('hero-heading').children[0])) {
+          document.getElementById('hero-dummy').classList.remove('mm-fixed-header')
+        }else{
+          document.getElementById('hero-dummy').style.top = `-${document.getElementById('hero-dummy').clientHeight- document.getElementById('uk-heading-hero').clientHeight}px`;
+          document.getElementById('hero-dummy').classList.add('mm-fixed-header')
+        }
+      }, false);
+
+
+      var isInViewport = function (elem) {
+        var bounding = elem.getBoundingClientRect();
+        return (
+          bounding.top >= 0 &&
+          bounding.left >= 0 &&
+          bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      };
+    </script>
 <!-- partial:partial/latest-blog.html -->
 <!-- partial:blogs/installing-elasticsearch-kibana-vagrant.html -->
-<section class="blog" id="blog">
+<section class="blog uk-container" id="blog">
     <h3 class="uk-h3" style="display: inline-block;">
         Installing Elasticsearch & Kibana Using Vagrant
     </h3>    <span class="uk-label uk-visible@s">Latest</span><br>
@@ -199,7 +231,7 @@
     </div>
     <br/>
 
-    <h4 class="mm-underlined">Is Everything is Working?</h4>
+    <h4 class="mm-underlined">Is Everything Working?</h4>
     <p>If everything is up and running as expected you will be able to find Elasticsearch at <a href="http://localhost:9200">http://localhost:9200</a> and Kibana at <a href="http://localhost:5601">http://localhost:5601</a>. </p>
     <p>A working Elasticsearch will return a JSON in your browser that looks a lot like this:</p>
 
@@ -280,7 +312,7 @@
 
 <!-- partial:partial/master-foot.html -->
 <div class="icon-bar uk-flex">
-    <div class="icon-container uk-flex uk-flex-left uk-flex-middle">
+    <div id="icon-bar-icons" class="uk-flex uk-flex-left uk-flex-middle">
         <a href="#hero" uk-totop class="icon-container-icon"></a>
         <a href="https://dev.to/imikemiller" class="icon-container-icon">
             <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Mike Miller's DEV Profile" height="32"
@@ -318,6 +350,15 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
+<script>
+
+    var el = document.getElementsByClassName("uk-container")[0];
+    var style = window.getComputedStyle(el);
+    console.log(style.width,style.padding,style.margin);
+
+    document.getElementById('icon-bar-icons').style.width = `${document.getElementsByClassName("uk-container")[0].clientWidth}px`
+</script>
+
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
   window.ga = function () { ga.q.push(arguments); };
@@ -346,3 +387,6 @@
 </html>
 
 <!-- partial -->
+
+
+
