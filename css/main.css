@@ -150,28 +150,42 @@ Header
 .mm-fixed-header{
     display: block!important;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
 }
 
 .mm-arrow{
     border-left:white solid 0.2em;
-    min-height: 30px;
+    min-height: 100vh;
+    position: fixed;
+    width:20px;
+    top:-55px;
+    margin-left:-20px;
+    z-index:5;
+    -webkit-transition: top 0.1s;
+    transition: top 0.1s;
 }
 
 .mm-arrow::before {
     border-style: solid;
-    border-width: 0.2em 0.2em 0 0;
+    border-width: 3px 3px 0 0;
     content: '';
     display: inline-block;
-    height: 1.2em;
-    left: 0.15em;
+    height: 20px;
+    left: -13px;
     position: absolute;
-    width: 1.2em;
-    bottom: 0.2em;
-    left:-0.83em;
+    width: 20px;
+    bottom: 0;
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
+}
+
+#hero-arrow-blue{
+    border-color: #8CC3E9;
+}
+
+#hero-arrow-blue:before{
+    border-color:#8CC3E9;
 }
 
 #mm-first-arrow{
@@ -207,7 +221,7 @@ Icon Bar
 }
 
 .icon-container-icon:first-child{
-    margin-left:-0.9em;
+    margin-left:-9px;
 }
 
 /*
